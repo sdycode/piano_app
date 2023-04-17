@@ -1,0 +1,98 @@
+
+
+Hello friends,
+
+Today we will see
+how to create simple
+
+UI for Piano
+
+Lets start
+
+first we will create 
+row of white keys
+
+
+
+Lets crete black keys 
+widget
+
+
+
+
+
+Here black keys are
+
+set with certain pattern 
+
+So let make some 
+list of positions 
+for black keys
+
+Now lets see some
+
+other 
+effect on black key
+
+
+Lets modify this
+circle using
+custom paint
+
+
+Thanks for 
+
+watching
+
+
+
+
+In next video
+
+
+
+we will add more octaves
+
+
+and will add sounds . . .
+
+Stay tunned and
+
+subscribe . . . 
+
+
+
+
+. . . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
