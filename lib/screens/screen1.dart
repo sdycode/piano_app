@@ -17,7 +17,7 @@ AudioPlayer? audioPlayer;
 AudioCache? audioCache;
 
 class _Screen1State extends State<Screen1> {
-  ScrollController controller = ScrollController();
+  ScrollController controller = ScrollController(initialScrollOffset: w*0.7*3);
 
   @override
   void initState() {
@@ -54,7 +54,9 @@ class _Screen1State extends State<Screen1> {
                 width: w,
                 height: whiteKeyHeight,
                 child: ListView(
-                    controller: controller,
+                    controller:
+                    controller,
+                    //  ScrollController(initialScrollOffset: controller.offset),
                     physics: NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
