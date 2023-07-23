@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:piano_app/demo/demo_screen.dart';
-import 'package:piano_app/providers/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:piano_app/screens/screen1.dart';
 import 'package:piano_app/constants/sizes.dart';
-import 'package:provider/provider.dart';
+import 'package:piano_app/demo/demo_screen.dart';
+import 'package:piano_app/providers/provider.dart';
 
 void main() async {
+  /*
+  Resumed Piano app for now
+  
+  */
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
