@@ -1,10 +1,11 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:piano_app/providers/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:piano_app/constants/sizes.dart';
 import 'package:piano_app/widgets/OctaveUI.dart';
-import 'package:provider/provider.dart';
+import 'package:piano_app/providers/provider.dart';
+import 'package:piano_app/extensions/transform_ext.dart';
+import 'package:piano_app/widgets/small_size_octave.dart';
 
 class OctaveSlider extends StatelessWidget {
   final ScrollController controller;
@@ -12,6 +13,11 @@ class OctaveSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double scaleX = (controller.hasClients)
+        ? w / (controller.position.maxScrollExtent + 100)
+        : (700 / 3500);
+    double scaleY = ((h - whiteKeyHeight) / whiteKeyHeight) * 5;
+
     KeyProvider keyProvider = Provider.of<KeyProvider>(context);
     double pos = 0;
     if (controller.hasClients) {
@@ -30,7 +36,7 @@ class OctaveSlider extends StatelessWidget {
                 // controller.offset + d.delta.dx
                 );
 
-            log("oct1 $newPosition width ${w * 0.7} / ${controller.position.maxScrollExtent} /  w $w / $h");
+            // log("oct1 $newPosition width ${w * 0.7} / ${controller.position.maxScrollExtent} /  w $w / $h");
             // setState(() {});
             keyProvider.notifyListeners();
           },
@@ -39,32 +45,26 @@ class OctaveSlider extends StatelessWidget {
             width: w,
             color: Colors.white,
             child: Stack(children: [
-              Transform.translate(
-                offset: Offset(-w * 0.4, 0),
-                child: Transform.scale(
-                    // scaleX: 0.04,
-                    scaleX: (controller.hasClients)
-                        ? w / (controller.position.maxScrollExtent + 100)
-                        : (700 / 3500),
-                    scaleY: ((h - whiteKeyHeight) / whiteKeyHeight) * 5,
+              IgnorePointer(
+                ignoring: true,
+                child: Transform.translate(
+                  offset: Offset(-w * 0.4 * 0 + 5, 0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        OctaveUI(0),
-                        OctaveUI(0),
-                        OctaveUI(0),
-                        OctaveUI(0),
-                        OctaveUI(0),
-                        OctaveUI(0),
-                        OctaveUI(0),
+                        SmallSizeOctave(),
+                        SmallSizeOctave(),
+                        SmallSizeOctave(),
+                        SmallSizeOctave(),
+                        SmallSizeOctave(),
+                        SmallSizeOctave(),
+                        SmallSizeOctave(),
                       ],
-                    )),
+                    ),
+                  ),
+                ),
               ),
-              // OctaveUI(1),
-              // OctaveUI(2),
-              // OctaveUI(3),
-              // OctaveUI(4),
-              // OctaveUI(5),
-              // OctaveUI(6),
               Positioned(
                   left: pos,
                   child: Container(
@@ -78,9 +78,12 @@ class OctaveSlider extends StatelessWidget {
                   )),
               Positioned(
                   right: 60,
-                  child: Text(
-                    provider.keyPressed,
-                    style: TextStyle(fontSize: 35),
+                  child: Container(
+                    color: Colors.amber.shade100.withAlpha(220),
+                    child: Text(
+                      provider.keyPressed,
+                      style: TextStyle(fontSize: 35),
+                    ),
                   ))
             ]),
           ),

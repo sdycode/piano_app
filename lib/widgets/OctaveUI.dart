@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:piano_app/screens/screen1.dart';
 import 'package:piano_app/constants/sizes.dart';
@@ -22,7 +20,9 @@ class _OctaveUIState extends State<OctaveUI> {
   Widget build(BuildContext context) {
     return Container(
       width: w * 0.7,
+      // margin: EdgeInsets.symmetric(horizontal: 50),
       height: whiteKeyHeight,
+      color: Colors.pink,
       child: Stack(
         children: [
           Container(
